@@ -17,19 +17,15 @@ public class UserController {
     private UserService userService;
 
     @PostMapping
-    public ResponseEntity<String> addUser(User user) {
-        User savedUser = userService.saveUser(user);
-        if (savedUser != null) {
-            return new ResponseEntity<>("Dane użytkownika zapisane pomyślnie", HttpStatus.CREATED);
-        } else {
-            return new ResponseEntity<>("Wystąpił błąd podczas zapisywania danych użytkownika", HttpStatus.BAD_REQUEST);
-        }
+    public void addUser(User user) {
+        userService.saveUser(user);
     }
 
     @GetMapping
     public List<User> findAllUsers() {
         return userService.getAllUsers();
     }
+
 
     @GetMapping("/email/{email}")
     public User findByEmail(@PathVariable String email) {
