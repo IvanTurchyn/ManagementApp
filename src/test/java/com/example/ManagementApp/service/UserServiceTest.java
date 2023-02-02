@@ -41,9 +41,10 @@ class UserServiceTest {
     @Test
     public void updateUserTest() {
         User user = new User("Jana", "Kowalska","test@example1.com");
+        String id = "1";
         when(userRepository.save(any(User.class))).thenReturn(user);
 
-        User updatedUser = userService.updateUser(user);
+        User updatedUser = userService.updateUser(id, user);
         assertNotNull(updatedUser);
         assertEquals(user, updatedUser);
     }

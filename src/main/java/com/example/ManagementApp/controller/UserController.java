@@ -2,13 +2,11 @@ package com.example.ManagementApp.controller;
 
 import com.example.ManagementApp.model.User;
 import com.example.ManagementApp.service.UserService;
-import org.springframework.http.HttpStatus;
-
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/users")
@@ -26,6 +24,10 @@ public class UserController {
         return userService.getAllUsers();
     }
 
+    @GetMapping("/{id}")
+    public Optional<User> findById (@PathVariable String id){
+        return userService.findById(id);
+    }
 
     @GetMapping("/email/{email}")
     public User findByEmail(@PathVariable String email) {
@@ -33,8 +35,8 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public User updateUser(@PathVariable String id, User user) {
-        return userService.updateUser(user);
+    public User updateUser(@PathVariable String id, @RequestBody User user) {
+        return userService.updateUser(id, user);
     }
 
     @DeleteMapping("/{id}")

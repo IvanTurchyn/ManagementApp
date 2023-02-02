@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <title>Nowy użytkownik</title>
+
 </head>
 <body>
 <div class="container mt-5">
@@ -25,50 +26,6 @@
     <button type="submit" class="btn btn-primary" id="submitButton">Zapisz</button>
   </form>
 </div>
-
-<script>
-  document.querySelector("#submitButton").addEventListener("click", function(event) {
-    event.preventDefault();
-
-    let isFormValid = true;
-
-    let firstName = document.querySelector("#firstName").value;
-    let lastName = document.querySelector("#lastName").value;
-    let email = document.querySelector("#email").value;
-
-    if (!firstName) {
-      alert("Pole Imie jest wymagane");
-      isFormValid = false;
-    }
-
-    if (!lastName) {
-      alert("Pole Nazwisko jest wymagane");
-      isFormValid = false;
-    }
-
-    if (!email) {
-      alert("Pole Email jest wymagane");
-      isFormValid = false;
-    }
-
-    if (isFormValid) {
-      var data = new FormData();
-      data.append("firstName", firstName);
-      data.append("lastName", lastName);
-      data.append("email", email);
-
-      var xhr = new XMLHttpRequest();
-      xhr.open("POST", "http://localhost:8080/users", true);
-      xhr.onload = function () {
-        if (xhr.status === 200) {
-          window.location.href = "index.html";
-        } else {
-          console.error("Wystąpił błąd podczas zapisywania danych");
-        }
-      };
-      xhr.send(data);
-    }
-  });
-</script>
+<script src="app.js"></script>
 </body>
 </html>

@@ -2,6 +2,7 @@ package com.example.ManagementApp.controller;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+
 import static org.mockito.Mockito.when;
 
 import java.util.Arrays;
@@ -12,8 +13,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+
 
 import com.example.ManagementApp.model.User;
 import com.example.ManagementApp.service.UserService;
@@ -32,18 +32,6 @@ public class UserControllerTest {
         user.setFirstName("test_user");
         user.setLastName("test_password");
     }
-
-
-//    @Test
-//    public void addUser_ShouldReturnHttpStatusCreated() {
-//        User user = new User("John", "Doe", "john.doe@example.com");
-//        when(userService.saveUser(user)).thenReturn(user);
-//
-//        ResponseEntity<String> response = userController.addUser(user);
-//
-//        assertThat(response.getStatusCode(), is(HttpStatus.CREATED));
-//        assertThat(response.getBody(), is("Dane użytkownika zapisane pomyślnie"));
-//    }
 
     @Test
     public void findAllUsers_ShouldReturnListOfUsers() {
@@ -70,7 +58,8 @@ public class UserControllerTest {
     @Test
     public void updateUser_ShouldReturnUpdatedUser() {
         User user = new User("John", "Doe", "john.doe@example.com");
-        when(userService.updateUser(user)).thenReturn(user);
+        String id = "2";
+        when(userService.updateUser(id, user)).thenReturn(user);
 
         User response = userController.updateUser("1", user);
 
@@ -81,4 +70,5 @@ public class UserControllerTest {
     public void deleteUser_ShouldCallDeleteUserMethodFromUserService() {
         userController.deleteUser("1");
     }
+
 }

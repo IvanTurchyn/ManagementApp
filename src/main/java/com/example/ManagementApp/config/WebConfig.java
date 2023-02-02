@@ -5,7 +5,6 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.context.annotation.Bean;
 import java.util.List;
 import org.springframework.http.converter.HttpMessageConverter;
 import java.util.Arrays;
