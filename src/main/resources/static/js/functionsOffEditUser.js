@@ -27,23 +27,34 @@ let firstName = $("#firstName").val();
 let lastName = $("#lastName").val();
 let email = $("#email").val();
 
+// Walidacja danych formularza
+if (firstName == "" || lastName == "" || email == "") {
+alert("Wszystkie pola są wymagane");
+} else {
 // Wysłanie zapytania do serwera za pomocą AJAX
 $.ajax({
-  url: "http://localhost:8080/users/" + userId,
-  type: "PUT",
-  contentType: "application/json",
-  data: JSON.stringify({
-    firstName: firstName,
-    lastName: lastName,
-    email: email
-  }),
-  success: function() {
-    alert("Dane użytkownika zostały zmienione");
-    location.href = "index.html";
-  },
-  error: function(error) {
-    console.log(error);
-  }
+url: "http://localhost:8080/users/" + userId,
+type: "PUT",
+contentType: "application/json",
+data: JSON.stringify({
+firstName: firstName,
+lastName: lastName,
+email: email,
+modified: new Date().toISOString()
+}),
+success: function() {
+alert("Dane użytkownika zostały zmienione");
+location.href = "index.html";
+},
+error: function(error) {
+console.log(error);
+}
+});
+}
 });
 });
+
+document.getElementById("cancelButton").addEventListener("click", function(event) {
+event.preventDefault();
+window.location.href = "index.html";
 });

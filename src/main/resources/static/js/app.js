@@ -43,3 +43,8 @@
       xhr.send(data);
     }
   });
+
+document.getElementById("cancelButton").addEventListener("click", function(event) {
+event.preventDefault();
+window.location.href = "index.html";
+});

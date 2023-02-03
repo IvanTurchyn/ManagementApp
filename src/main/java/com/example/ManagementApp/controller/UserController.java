@@ -5,8 +5,7 @@ import com.example.ManagementApp.service.UserService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @RestController
 @RequestMapping("/users")
@@ -37,6 +36,20 @@ public class UserController {
     @PutMapping("/{id}")
     public User updateUser(@PathVariable String id, @RequestBody User user) {
         return userService.updateUser(id, user);
+    }
+
+    @GetMapping("/{id}/timestamps")
+    public Map<String, Object> getTimestamps(@PathVariable("id") String id) {
+        Optional<User> optionalUser = userService.findById(id);
+        Map<String, Object> timestamps = new HashMap<>();
+        optionalUser.ifPresent(user -> {
+            timestamps.put("firstName", user.getFirstName());
+            timestamps.put("lastName", user.getLastName());
+            timestamps.put("email", user.getEmail());
+            timestamps.put("added", user.getAdded());
+            timestamps.put("modified", user.getModified());
+        });
+        return timestamps;
     }
 
     @DeleteMapping("/{id}")
