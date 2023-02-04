@@ -13,6 +13,11 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @RequestMapping(value = "/")
+    public String index() {
+        return "index";
+    }
+
     @PostMapping
     public void addUser(User user) {
         userService.saveUser(user);
