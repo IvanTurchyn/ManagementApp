@@ -18,6 +18,8 @@ target/
 *.iws
 *.iml
 *.ipr
+*.class
+*.jar
 
 ### NetBeans ###
 /nbproject/private/
@@ -28,6 +30,8 @@ target/
 build/
 !**/src/main/**/build/
 !**/src/test/**/build/
+pom.xml
+application.properties
 
 ### VS Code ###
 .vscode/
