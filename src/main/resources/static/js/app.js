@@ -1,3 +1,5 @@
+  var baseUrl = "http://40.81.16.213";
+
   document.querySelector("#submitButton").addEventListener("click", function(event) {
   event.preventDefault();
 
@@ -32,7 +34,7 @@
     data.append("email", email);
 
       var xhr = new XMLHttpRequest();
-      xhr.open("POST", "http://localhost:8080/users", true);
+      xhr.open("POST", baseUrl + "/users", true);
       xhr.onload = function () {
         if (xhr.status === 200) {
           window.location.href = "index.html";

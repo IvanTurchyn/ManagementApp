@@ -1,3 +1,5 @@
+var baseUrl = "http://40.81.16.213";
+
 $(document).ready(function() {
 // Pobranie ID użytkownika z parametru URL
 let urlParams = new URLSearchParams(window.location.search);
@@ -5,7 +7,7 @@ let userId = urlParams.get("id");
 
 // Pobieranie danych użytkownika za pomocą AJAX
 $.ajax({
-url: "http://localhost:8080/users/" + userId,
+url: baseUrl + "/users/" + userId,
 type: "GET",
 dataType: "json",
 success: function(user) {
@@ -33,7 +35,7 @@ alert("Wszystkie pola są wymagane");
 } else {
 // Wysłanie zapytania do serwera za pomocą AJAX
 $.ajax({
-url: "http://localhost:8080/users/" + userId,
+url: baseUrl + "/users/" + userId,
 type: "PUT",
 contentType: "application/json",
 data: JSON.stringify({

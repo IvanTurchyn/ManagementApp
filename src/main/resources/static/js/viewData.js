@@ -1,3 +1,5 @@
+var baseUrl = "http://40.81.16.213";
+
 document.getElementById("cancelButton").addEventListener("click", function(event) {
 event.preventDefault();
 window.location.href = "index.html";
@@ -9,7 +11,7 @@ let urlParams = new URLSearchParams(window.location.search);
 let userId = urlParams.get("id");
 
 const xhr = new XMLHttpRequest();
-xhr.open("GET", "http://localhost:8080/users/" + userId + "/timestamps");
+xhr.open("GET", baseUrl + "/users/" + userId + "/timestamps");
 xhr.send();
 xhr.onload = function() {
 if (xhr.status === 200) {
