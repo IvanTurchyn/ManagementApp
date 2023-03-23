@@ -71,4 +71,12 @@ class UserControllerTest {
         verify(userService, times(1)).updateUser(anyString(), any(User.class));
         assertEquals(expectedUser, actualUser);
     }
+
+    @Test
+    void deleteUser() {
+        String userId = "test-id";
+        doNothing().when(userService).deleteUser(userId);
+        userController.deleteUser(userId);
+        verify(userService, times(1)).deleteUser(userId);
+    }
 }
