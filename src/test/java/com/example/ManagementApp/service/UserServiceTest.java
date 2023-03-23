@@ -67,4 +67,24 @@ public class UserServiceTest {
         verify(userRepository, times(1)).findByEmail(anyString());
         assertEquals(expectedUser, actualUser);
     }
+
+    @Test
+    public void deleteUserTest() {
+        String userId = "test-id";
+        doNothing().when(userRepository).deleteById(userId);
+        userService.deleteUser(userId);
+        verify(userRepository, times(1)).deleteById(userId);
+    }
+
+    @Test
+    public void getAllUsersTest() {
+        List<User> expectedUsers = Arrays.asList(
+                new User("firstName1", "lastName1", "email1"),
+                new User("firstName2", "lastName2", "email2")
+        );
+        when(userRepository.findAll()).thenReturn(expectedUsers);
+        List<User> actualUsers = userService.getAllUsers();
+        verify(userRepository, times(1)).findAll();
+        assertEquals(expectedUsers, actualUsers);
+    }
 }
