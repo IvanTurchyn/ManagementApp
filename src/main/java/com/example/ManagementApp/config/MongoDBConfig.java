@@ -7,10 +7,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 
 @Configuration
-@PropertySource("application.properties")
+@EnableMongoRepositories
+@PropertySource({"classpath:application.properties", "classpath:application-external.properties"})
 public class MongoDBConfig {
 
     @Value("${spring.data.mongodb.uri}")
