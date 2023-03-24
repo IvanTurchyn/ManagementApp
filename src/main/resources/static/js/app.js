@@ -1,6 +1,6 @@
-  var baseUrl = "http://40.81.16.213";
+var baseUrl = "http://localhost:8080";
 
-  document.querySelector("#submitButton").addEventListener("click", function(event) {
+document.querySelector("#submitButton").addEventListener("click", function (event) {
   event.preventDefault();
 
   let isFormValid = true;
@@ -33,20 +33,20 @@
     data.append("lastName", lastName);
     data.append("email", email);
 
-      var xhr = new XMLHttpRequest();
-      xhr.open("POST", baseUrl + "/users", true);
-      xhr.onload = function () {
-        if (xhr.status === 200) {
-          window.location.href = "index.html";
-        } else {
-          console.error("Wystąpił błąd podczas zapisywania danych");
-        }
-      };
-      xhr.send(data);
-    }
-  });
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", baseUrl + "/users", true);
+    xhr.onload = function () {
+      if (xhr.status === 200) {
+        window.location.href = "index.html";
+      } else {
+        console.error("Wystąpił błąd podczas zapisywania danych");
+      }
+    };
+    xhr.send(data);
+  }
+});
 
-document.getElementById("cancelButton").addEventListener("click", function(event) {
-event.preventDefault();
-window.location.href = "index.html";
+document.getElementById("cancelButton").addEventListener("click", function (event) {
+  event.preventDefault();
+  window.location.href = "index.html";
 });
