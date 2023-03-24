@@ -13,15 +13,15 @@
     <form class="w-50" action="http://localhost:8080/users" method="post">
       <div class="form-group">
         <label for="firstName">Imie *</label>
-        <input type="text" class="form-control" id="firstName" name="firstName">
+        <input type="text" class="form-control" id="firstName" name="firstName" required>
       </div>
       <div class="form-group">
         <label for="lastName">Nazwisko *</label>
-        <input type="text" class="form-control" id="lastName" name="lastName">
+        <input type="text" class="form-control" id="lastName" name="lastName" required>
       </div>
       <div class="form-group">
         <label for="email">Email *</label>
-        <input type="email" class="form-control" id="email" name="email">
+        <input type="email" class="form-control" id="email" name="email" required>
       </div>
       <button type="submit" class="btn btn-success mr-3" id="submitButton">Zapisz</button>
       <button type="button" class="btn btn-danger" id="cancelButton">Anuluj</button>
